@@ -20,3 +20,17 @@
 **Link to Postman Collection**
 
 https://www.postman.com/security-specialist-87414207/workspace/hospital/collection/26664672-f9a8883e-9aca-4588-ba03-e2f7d1fce72a 
+
+**ENV**
+
+Create a .env file in the root directory and add the following environment variables:
+
+DB_NAME=database-name
+
+DB_USER=database-username
+
+DB_PASSWORD=database-password
+
+DB_HOST=database-host
+
+DB_DIALECT=database-dialect

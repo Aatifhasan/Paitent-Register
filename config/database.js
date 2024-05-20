@@ -1,13 +1,11 @@
-// database.js
-
 const { Sequelize } = require('sequelize');
-require('dotenv').config(); // Ensure this line is at the top
+require('dotenv').config();
 
 // Initialize Sequelize with database credentials from environment variables
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST,
   dialect: process.env.DB_DIALECT,
-  logging: false // Set to true to log SQL queries
+  logging: false
 });
 
 // Test the database connection

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const multer = require('multer'); // Import multer
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());

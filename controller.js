@@ -1,5 +1,6 @@
+const Psychiatrist = require('./models/psychiatrist');
 const Patient = require('./models/patient');
-
+const Hospital = require('./models/hospital');
 // Controller function for new patient registration
 // const registerPatient = async (req, res) => {
 //     try {
@@ -51,15 +52,39 @@ const registerPatient = async (req, res) => {
   };
 
 // Controller function to fetch psychiatrists and patient details for a hospital
-const getPsychiatristsByHospital = async (req, res) => {
+async function getPsychiatristsByHospital(req, res) {
     try {
-        // Fetch psychiatrists and patient details from the database based on hospitalId
-        // Return response
+        const hospitalId = req.params.hospitalId;
+
+        const hospital = await Hospital.findByPk(hospitalId, {
+            include: {
+                model: Psychiatrist,
+                include: [Patient]
+            }
+        });
+
+        if (!hospital) {
+            return res.status(404).json({ error: 'Hospital not found' });
+        }
+
+        const psychiatrists = hospital.Psychiatrists.map(psychiatrist => ({
+            id: psychiatrist.id,
+            name: psychiatrist.name,
+            patientsCount: psychiatrist.Patients.length
+        }));
+
+        res.json({
+            hospitalName: hospital.name,
+            totalPsychiatristsCount: hospital.Psychiatrists.length,
+            totalPatientsCount: hospital.Psychiatrists.reduce((sum, psychiatrist) => sum + psychiatrist.Patients.length, 0),
+            psychiatrists
+        });
     } catch (error) {
-        // Handle error
+        console.error(error);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
 
 module.exports = {
     registerPatient,

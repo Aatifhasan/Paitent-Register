@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Psychiatrist = require('./psychiatrist');
 
 const Patient = sequelize.define('Patient', {
     name: {
@@ -39,4 +40,6 @@ const Patient = sequelize.define('Patient', {
     }
 });
 
+Patient.belongsTo(Psychiatrist);
+Psychiatrist.hasMany(Patient);
 module.exports = Patient;

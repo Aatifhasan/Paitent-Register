@@ -134,3 +134,8 @@ The code uses Sequelize models to interact with the database. The primary models
 - `Hospital`: Represents hospital data.
 
 Ensure your database is properly configured with these models for the API to function correctly.
+
+## Postman Collection
+link : https://www.postman.com/security-specialist-87414207/workspace/hospital/collection/26664672-b344d19d-559a-4300-bbd3-be319be7a99c?action=share&creator=26664672
+
+

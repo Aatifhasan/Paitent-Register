@@ -7,6 +7,7 @@
 - [File Upload Configuration](#file-upload-configuration)
 - [Error Handling](#error-handling)
 - [Models](#models)
+- [Postman Collection](#Postman-collection)
 
 ## Installation
 
